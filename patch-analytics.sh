@@ -1,8 +1,7 @@
-# for entry in "."/*".html"
-# do
-# 	echo $entry
-#   "./gtmPatcher.py" $entry
-# done
+for entry in "."/*".html"
+do
+  "../scripts/gtm-patcher.py" $entry
+done
 for entry in "lab"/*
 do
   if [ -d "${entry}" ] ; then
