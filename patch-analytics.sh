@@ -1,13 +1,13 @@
-for entry in "."/*".html"
-do
-  "../scripts/gtm-patcher.py" $entry
-done
-for entry in "."/*
-do
-  if [ -d "${entry}" ] ; then
-    for another_file in $entry/*".html"
+in_dir(){
+    for entry in $1/*".html"
     do
-  	"../scripts/gtm-patcher.py" $another_file
-    done  
-  fi
-done
+      "../scripts/gtm-patcher.py" $entry
+    done
+    for entry in $1/*
+    do
+      if [ -d "${entry}" ] ; then
+        in_dir $entry
+      fi
+    done
+}
+in_dir "."
