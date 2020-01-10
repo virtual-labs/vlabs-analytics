@@ -20,9 +20,6 @@ def patch(filepath):
             txt = inf.read()
             # soup = BeautifulSoup(txt, 'html.parser')
             soup = BeautifulSoup(txt, "html5lib")
-        # insert head snippet into the document
-        #mydivs = soup.findAll('script', class_="gtm", limit=1)
-        #if len(mydivs)==0:
         mydiv = soup.head.find('script', { 'class': 'gtm' })
         if not mydiv:
             scrTag = Tag(soup, name = 'script')
@@ -52,7 +49,7 @@ def patch(filepath):
 
         # save the file again
         with open(filepath, 'w') as outf:
-            outf.write(soup.prettify(formatter='html'))
+            outf.write(str(soup))
 
     except IOError as e:
         print "I/O error({0}): {1}".format(e.errno, e.strerror)
