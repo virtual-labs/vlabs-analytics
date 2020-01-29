@@ -14,8 +14,7 @@ iframeSrc = "https://www.googletagmanager.com/ns.html?id=GTM-W59SWTR"
 
 insert_head = "<script class='gtm'>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W59SWTR');</script"
 def patch_php(filepath):
-    if("*.html" in filepath.split('/')):
-        return 0
+    # print(filepath)
     try:
         if(1):
             f1 = open(filepath,"r")
@@ -25,9 +24,6 @@ def patch_php(filepath):
                 if("<script class='gtm'>" in line):
                     return
             f1.close()
-            f = open(filepath,"w")
-            f.write(string_inserted)
-            f.close()
         if(1):
             # print(filepath)
             f1 = open(filepath,"r")
@@ -44,7 +40,7 @@ def patch_php(filepath):
                         temp_string+=i
                     line = temp_string
                 string_inserted+=line
-            # print(string_inserted)
+            print(string_inserted)
             f1.close()
             f = open(filepath,"w")
             f.write(string_inserted)
