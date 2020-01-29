@@ -63,6 +63,7 @@ def patch_php(filepath):
 def patch(filepath):
     if("php" in filepath):
         patch_php(filepath)
+        return 0
     try:
         with open(filepath) as inf:
             txt = inf.read()
