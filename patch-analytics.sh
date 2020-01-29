@@ -1,7 +1,7 @@
 in_dir(){
     for entry in $1/*".php"
     do
-      "./change.py" $entry
+      "../scripts/gtm-patcher.py" $entry
     done
     for entry in $1/*".html"
     do
